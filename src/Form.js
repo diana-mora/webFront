@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
 import {Tabs, Col, Tab, ButtonToolbar, Button, FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap'
-//import Form_regis from "./Form_regis";
+import Form_regis from "./Form_regis";
 //import {Tabs, Col, Tab, ButtonToolbar, Button, FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap'
 //import AuthService from 'utils/AuthService'
 //import styles from './styles.module.css'
@@ -123,7 +123,7 @@ render(){
           <a href="usuario" style={{
               color: '#000'
           }} onClick={() => this.CrearUsuario()}>Crear Cuenta</a> </span>
-          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
       <span className="App-sub" >
               <a href="recuperar" style={{
                   color: '#000'

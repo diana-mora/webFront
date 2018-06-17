@@ -36,7 +36,7 @@ class App extends Component {
         <br/>
         <p className="App-intro">
           <h1> Iniciar sesión</h1>
-          <Form onSubmit={fields => this.onSubmit(fields)}/>
+          <Form_regis onSubmit={fields => this.onSubmit(fields)}/>
         </p>
       </div>
     );

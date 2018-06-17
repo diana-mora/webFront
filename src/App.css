@@ -58,6 +58,13 @@ body {
 	width:300px;
 	height:300px;
 }
+.Registrarse h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+.Registrarse {
+  margin: auto;
+	width:300px;
+	height:300px;
+}
 .Iniciarsesion h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
 input {
