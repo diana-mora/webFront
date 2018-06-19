@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Tabs, Col, Tab, ButtonToolbar, Button, FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap'
-//import Form from './Form';
-import Form from './Form_regis';
+import Form from './Form';
 
 export default class Form_regis extends React.Component{
   state = {
     rut: "",
     nombre: "",
+    tipo_usuario: "cliente",
     apellido: "",
     email: "",
     password:""

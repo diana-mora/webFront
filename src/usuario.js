@@ -17,6 +17,7 @@ export class usuario extends Component {
     render() {
         const {rut, tipo_usuario, nombre, apellido, email} = this.state;
         return <p>
+        <h1 className="App-title">Bienvenido a Easy Table</h1>
             {rut}<br/>
             {tipo_usuario}<br/>
             {nombre}<br/>

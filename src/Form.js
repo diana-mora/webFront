@@ -2,7 +2,15 @@ import React from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
 import {Tabs, Col, Tab, ButtonToolbar, Button, FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap'
+import {browserHistory, Router, Route, Redirect, Link} from 'react-router';
+import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap'
+//import { Link } from 'react-router'
+import { LinkContainer } from 'react-router-bootstrap'
 import Form_regis from "./Form_regis";
+import usuario from './usuario';
+//import reserva from './reserva'; //hay problemas aqui
+import recuperar from './recuperar';
+//import routes from "./routes"
 //import {Tabs, Col, Tab, ButtonToolbar, Button, FormGroup, FormControl, ControlLabel, Alert} from 'react-bootstrap'
 //import AuthService from 'utils/AuthService'
 //import styles from './styles.module.css'
@@ -12,19 +20,20 @@ export default class Form extends React.Component{
     rut: "",
     password:""
   };
-
+//Iniciarsesion
   onLoginSubmit(event) {
     event.preventDefault()
     const { rut, password } = this.state
     if (rut && password) { //verificar que existe user
       this.props.auth.login(rut, password)
+      fetch('http://localhost:5555/usuario')
         .then(result => {
           if (!result.token) {
             this.setState({loginError: result.message})
             return
           }
           this.props.auth.finishAuthentication(result.token)
-          this.context.router.push('/Form_regis')
+          this.context.router.push('/usuario')
         })
     }
   }
@@ -41,7 +50,7 @@ export default class Form extends React.Component{
       //Form_regis( rut, password){
       //  fetch('https://localhost:555/Form_regis')
     //  }
-
+//registrar_usuario
     onSignupSubmit(event) {
       event.preventDefault()
       const { rut, nombre, apellido, email, password } = this.state
@@ -56,7 +65,7 @@ export default class Form extends React.Component{
             //this.context.router.push('/Form_regis')
           })
       }*/
-      this.context.router.push('/Form')
+      this.context.router.push('/Form_regis')
     }
 
     onSubmitCrear = (fields)=>{
@@ -67,7 +76,7 @@ export default class Form extends React.Component{
   }
 
   CrearUsuario() {
-      fetch('http://localhost:5555/usuario/')
+      fetch('http://localhost:5555/Form_regis/')
           .then(response => response.json())
           .then(responseJSON => {
               console.log("Form_regis", responseJSON);
@@ -82,10 +91,10 @@ export default class Form extends React.Component{
   }
 
   Recuperar_contraseña() {
-      fetch('http://localhost:5555/usuario/')
+      fetch('http://localhost:5555/recuperar/')
           .then(response => response.json())
           .then(responseJSON => {
-              console.log("Form_regis", responseJSON);
+              console.log("recuperar", responseJSON);
               this.setState({
                   usuario: responseJSON.data
               });
@@ -103,6 +112,8 @@ render(){
     //<form  onSubmit={this.onLoginSubmit.bind(this)}>
     <div class="Iniciarsesion">
       <form method="post">
+      <h2> Iniciar sesión </h2>
+
   <br />
        RUT <input type ="text"
       placeholder="12345678-9" required="required"
@@ -115,24 +126,25 @@ render(){
       placeholder="password" required="required"
       value={this.state.password}
       onChange={e => this.setState({password: e.target.value})}/>
-      <br /> <br />
-      <button type="onLoginSubmit" class="btn btn-primary btn-block btn-large">Continuar</button>
+      <br /> <br /> <br />
+      <button href="usuario" type="onLoginSubmit" class="btn btn-primary btn-block btn-large">Continuar</button>
       </form>
       <br />
       <span className="App-sub" >
-          <a href="usuario" style={{
+          <a href="Form_regis" style={{
               color: '#000'
           }} onClick={() => this.CrearUsuario()}>Crear Cuenta</a> </span>
           &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-      <span className="App-sub" >
-              <a href="recuperar" style={{
-                  color: '#000'
-              }} onClick={() => this.Recuperar_contraseña()}>Recuperar Contraseña</a></span>
 
 </div>
     /*<input type="submit" value="Continuar"/>
 
     </form>*/
+    /*proximamente
+    <span className="App-sub" >
+            <a href="recuperar" style={{
+                color: '#000'
+            }} onClick={() => this.Recuperar_contraseña()}>Recuperar Contraseña</a></span>*/
 
   );
 }
@@ -154,7 +166,7 @@ linea 77   onChange={e => this.setState({password: e.target.value})}/>
 <input type="submit" value="Registrarse"/> <input type="submit" value="Recuperar contraseña"/>
 */
 
-/*-----------------fecha-------------------- https://www.w3schools.com/Html/tryit.asp?filename=tryhtml_input_date_max_min
+/*----------------fecha-------------------- https://www.w3schools.com/Html/tryit.asp?filename=tryhtml_input_date_max_min
 <form action="/action_page.php">
 Enter a date before 1980-01-01:<br>
 <input type="date" name="bday" max="1979-12-31"><br><br>

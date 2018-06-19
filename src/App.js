@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom';
+// import { Link } from "react-router-dom";
+import {browserHistory, Router, Route, Redirect, Link} from 'react-router';
 import Form from "./Form";
 import Form_regis from "./Form_regis";
-import {usuario} from './usuario'
+//import Form_reser from "./Form_reser";
+import Form_rec from './Form_rec';
+import usuario from './usuario';
+import recuperar from './recuperar';
+import NewAdmin from './NewAdmin/NewAdmin';
+import NewMesa from './mesa/NewMesa';
+import perfil_admin from './perfil/perfil_admin'
+//import reserva from './reserva'
+
 
 class App extends Component {
   constructor(props) {
@@ -30,13 +41,14 @@ class App extends Component {
           <h1 className="App-title">Bienvenido a Easy Table</h1>
           <h2 className="App-title">La manera más fácil de reservar</h2>
           <div className="App-intro">
+
 </div>
 
         </header>
         <br/>
         <p className="App-intro">
-          <h1> Iniciar sesión</h1>
-          <Form_regis onSubmit={fields => this.onSubmit(fields)}/>
+          <perfil_admin onSubmit={fields => this.onSubmit(fields)}/>
+
         </p>
       </div>
     );
@@ -44,3 +56,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+//date---  npm install moment --save
